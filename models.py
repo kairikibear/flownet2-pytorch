@@ -6,7 +6,7 @@ from torch.nn import init
 
 import math
 import numpy as np
-print(DEBUG)
+# print(DEBUG)
 try:
     if DEBUG == '0':
         from networks.resample2d_package.resample2d import Resample2d
