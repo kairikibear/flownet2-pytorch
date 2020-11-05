@@ -5,7 +5,8 @@ import os
 import models
 import time
 import argparse, os, sys, subprocess
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
+import cv2
 from PIL import Image
 from utils import flow_utils
 
@@ -40,7 +41,7 @@ def load_sequence(img1, img2):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--rgb_max", type=float, default = 255.)
-    parser.add_argument('--weight_file', default='model_weights/FlowNet2_checkpoint.pth.tar', type=str,
+    parser.add_argument('--weight_file', default='weights/FlowNet2_checkpoint.pth.tar', type=str,
                         metavar='PATH', help='path to latest checkpoint (default: none)')
     parser.add_argument('--img1', default='test_images/frame_0003.png', type=str,
                         metavar='PATH', help='path to left stereo image')
@@ -79,6 +80,7 @@ if __name__ == '__main__':
     print ("Inference took {:0.4f} seconds".format(end_time-start_time))
     # save the visualization of one disparity
     flow = flow_utils.flow2img (disps)
-    plt.imshow(flow)
-    plt.show()
+    cv2.imshow("uwu", flow)
+    cv2.waitKey(0)
+    
 

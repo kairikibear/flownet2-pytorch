@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import os.path
 
 TAG_CHAR = np.array([202021.25], np.float32)

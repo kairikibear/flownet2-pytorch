@@ -1,3 +1,5 @@
+import os
+DEBUG = os.environ.get('DEBUG', '0')
 import torch
 import torch.nn as nn
 from torch.nn import init
@@ -5,15 +7,17 @@ from torch.nn import init
 import math
 import numpy as np
 
-from .correlation_package.correlation import Correlation
+if DEBUG == '0':
+    from .correlation_package.correlation import Correlation
 # To use CPU implementation of correlation in C++ comment line above and uncomment
 # the line below.
-# from .correlation_cpp_package.correlation import Correlation
+else:
+    from .correlation_cpp_package.correlation import Correlation
 # PyTorch Version
 # from .correlation import Correlation
 
 from .submodules import *
-'Parameter count , 39,175,298 '
+# 'Parameter count , 39,175,298 '
 
 class FlowNetC(nn.Module):
     def __init__(self,args, batchNorm=True, div_flow = 20):
